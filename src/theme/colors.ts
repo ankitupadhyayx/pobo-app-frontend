@@ -1,0 +1,21 @@
+/** Raw colour values for places that can't take a className (icons, RefreshControl, Switch). */
+export const colors = {
+  brand: '#0d9488',
+  brandDark: '#0f766e',
+  brandDeep: '#134e4a',
+  brandSoft: '#f0fdfa',
+  ink: '#0f172a',
+  slate700: '#334155',
+  slate600: '#475569',
+  muted: '#64748b',
+  slate400: '#94a3b8',
+  line: '#e2e8f0',
+  surface: '#f1f5f9',
+  white: '#ffffff',
+  danger: '#e11d48',
+  dangerSoft: '#fff1f2',
+  warn: '#d97706',
+  amber500: '#f59e0b',
+  ok: '#059669',
+  info: '#1d4ed8',
+} as const;

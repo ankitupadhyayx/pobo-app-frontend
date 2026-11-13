@@ -1,0 +1,2418 @@
+{
+  "server_time": "2026-10-23T22:04:14Z",
+  "timezone": "Asia/Kolkata",
+  "settings": {
+    "sla.first_contact.target_minutes": 15,
+    "sla.first_contact.breach_minutes": 30,
+    "sla.first_contact.warning_minutes": 10,
+    "service_hours.start": "09:00",
+    "service_hours.end": "18:00",
+    "service_hours.working_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "service_hours.holidays": [],
+    "float.window_minutes": 30,
+    "float.max_candidates": 5,
+    "float.max_distance_km": 15,
+    "capacity.reference_mapped_units": 3000,
+    "capacity.reference_open_requirements": 60,
+    "home.new_assignment_hours": 24,
+    "home.items_per_section": 3,
+    "followup.default_due_hours": 24,
+    "onboarding.ack_version": "2026-10",
+    "tenancy.expiry_alert_days": 30,
+    "listings.min_photos": 0,
+    "uploads.max_image_bytes": 8000000,
+    "uploads.presign_expiry_seconds": 900,
+    "matching.top_match_score": 85,
+    "matching.max_results": 20,
+    "sync.changes_page_size": 500,
+    "intake.require_otp": true,
+    "keys.collect_lead_minutes": 60,
+    "keys.return_due_hours": 2,
+    "uploads.max_video_bytes": 150000000,
+    "inspection.min_photos": 3,
+    "inspection.min_videos": 0
+  },
+  "master_lists": {
+    "AVAILABILITY": [
+      {
+        "code": "IMMEDIATE",
+        "label": "Immediate / ready",
+        "label_hi": "तुरंत",
+        "metadata": {
+          "score": 10
+        }
+      },
+      {
+        "code": "WITHIN_30_DAYS",
+        "label": "Within 30 days",
+        "label_hi": "30 दिनों में",
+        "metadata": {
+          "score": 7
+        }
+      },
+      {
+        "code": "WITHIN_90_DAYS",
+        "label": "Within 90 days",
+        "label_hi": "90 दिनों में",
+        "metadata": {
+          "score": 4
+        }
+      },
+      {
+        "code": "LATER",
+        "label": "Later / negotiable",
+        "label_hi": "बाद में",
+        "metadata": {
+          "score": 4
+        }
+      }
+    ],
+    "CALLBACK_WINDOW": [
+      {
+        "code": "MORNING",
+        "label": "Morning (9 AM – 12 PM)",
+        "label_hi": "सुबह (9 – 12 बजे)",
+        "metadata": {}
+      },
+      {
+        "code": "AFTERNOON",
+        "label": "Afternoon (12 – 4 PM)",
+        "label_hi": "दोपहर (12 – 4 बजे)",
+        "metadata": {}
+      },
+      {
+        "code": "EVENING",
+        "label": "Evening (4 – 8 PM)",
+        "label_hi": "शाम (4 – 8 बजे)",
+        "metadata": {}
+      },
+      {
+        "code": "ANYTIME",
+        "label": "Any time",
+        "label_hi": "कभी भी",
+        "metadata": {}
+      }
+    ],
+    "CALL_OUTCOME": [
+      {
+        "code": "INTERESTED",
+        "label": "Interested",
+        "label_hi": "इच्छुक",
+        "metadata": {
+          "connected": true,
+          "stops_sla": true,
+          "sets_status": "QUALIFIED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "CALL_BACK_LATER",
+        "label": "Call back later",
+        "label_hi": "बाद में कॉल करें",
+        "metadata": {
+          "connected": true,
+          "stops_sla": true,
+          "sets_status": "CONNECTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "NEEDS_TIME",
+        "label": "Needs time / exploring",
+        "label_hi": "समय चाहिए",
+        "metadata": {
+          "connected": true,
+          "stops_sla": true,
+          "sets_status": "CONNECTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "NO_ANSWER",
+        "label": "No answer",
+        "label_hi": "जवाब नहीं",
+        "metadata": {
+          "connected": false,
+          "stops_sla": true,
+          "sets_status": "CONTACT_ATTEMPTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "BUSY",
+        "label": "Busy",
+        "label_hi": "व्यस्त",
+        "metadata": {
+          "connected": false,
+          "stops_sla": true,
+          "sets_status": "CONTACT_ATTEMPTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "SWITCHED_OFF",
+        "label": "Switched off / unreachable",
+        "label_hi": "स्विच ऑफ़",
+        "metadata": {
+          "connected": false,
+          "stops_sla": true,
+          "sets_status": "CONTACT_ATTEMPTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "NOT_INTERESTED",
+        "label": "Not interested",
+        "label_hi": "रुचि नहीं",
+        "metadata": {
+          "connected": true,
+          "stops_sla": true,
+          "closes_lost": true,
+          "sets_status": "CLOSED_LOST"
+        }
+      },
+      {
+        "code": "WRONG_NUMBER",
+        "label": "Wrong number",
+        "label_hi": "गलत नंबर",
+        "metadata": {
+          "connected": false,
+          "stops_sla": true,
+          "hold_reason": "INVALID_DATA",
+          "sets_status": "ON_HOLD"
+        }
+      },
+      {
+        "code": "DO_NOT_CONTACT",
+        "label": "Do not contact (DNC)",
+        "label_hi": "संपर्क न करें",
+        "metadata": {
+          "dnc": true,
+          "connected": true,
+          "stops_sla": true
+        }
+      }
+    ],
+    "CONFIGURATION": [
+      {
+        "code": "STUDIO",
+        "label": "Studio",
+        "label_hi": "स्टूडियो",
+        "metadata": {}
+      },
+      {
+        "code": "1BHK",
+        "label": "1 BHK",
+        "label_hi": "1 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "1_5BHK",
+        "label": "1.5 BHK",
+        "label_hi": "1.5 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "2BHK",
+        "label": "2 BHK",
+        "label_hi": "2 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "2_5BHK",
+        "label": "2.5 BHK",
+        "label_hi": "2.5 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "3BHK",
+        "label": "3 BHK",
+        "label_hi": "3 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "3_5BHK",
+        "label": "3.5 BHK",
+        "label_hi": "3.5 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "4BHK",
+        "label": "4 BHK",
+        "label_hi": "4 बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "4_PLUS_BHK",
+        "label": "4+ BHK",
+        "label_hi": "4+ बीएचके",
+        "metadata": {}
+      },
+      {
+        "code": "VILLA",
+        "label": "Villa / Independent house",
+        "label_hi": "विला",
+        "metadata": {}
+      },
+      {
+        "code": "PLOT",
+        "label": "Plot",
+        "label_hi": "प्लॉट",
+        "metadata": {}
+      }
+    ],
+    "DATA_SOURCE": [
+      {
+        "code": "PERSON_CONFIRMED",
+        "label": "Directly confirmed by person",
+        "label_hi": "व्यक्ति द्वारा पुष्टि",
+        "metadata": {}
+      },
+      {
+        "code": "OWNER",
+        "label": "Owner",
+        "label_hi": "मालिक",
+        "metadata": {}
+      },
+      {
+        "code": "TENANT",
+        "label": "Tenant",
+        "label_hi": "किरायेदार",
+        "metadata": {}
+      },
+      {
+        "code": "NEIGHBOUR",
+        "label": "Neighbour",
+        "label_hi": "पड़ोसी",
+        "metadata": {}
+      },
+      {
+        "code": "SOCIETY_STAFF",
+        "label": "Society staff / guard",
+        "label_hi": "सोसाइटी स्टाफ",
+        "metadata": {}
+      },
+      {
+        "code": "MAINTENANCE_OFFICE",
+        "label": "Maintenance office",
+        "label_hi": "मेंटेनेंस ऑफिस",
+        "metadata": {}
+      },
+      {
+        "code": "DOCUMENT",
+        "label": "Document",
+        "label_hi": "दस्तावेज़",
+        "metadata": {}
+      },
+      {
+        "code": "AA_OBSERVATION",
+        "label": "AA observation",
+        "label_hi": "एए अवलोकन",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "DOORSTEP_OUTCOME": [
+      {
+        "code": "INFORMATION_PROVIDED",
+        "label": "Information provided",
+        "label_hi": "जानकारी मिली",
+        "metadata": {}
+      },
+      {
+        "code": "PARTIAL_INFORMATION",
+        "label": "Partial information",
+        "label_hi": "आंशिक जानकारी",
+        "metadata": {
+          "incomplete": true
+        }
+      },
+      {
+        "code": "DECLINED",
+        "label": "Declined to share",
+        "label_hi": "जानकारी देने से मना",
+        "metadata": {}
+      },
+      {
+        "code": "NOBODY_AVAILABLE",
+        "label": "Nobody available",
+        "label_hi": "कोई उपलब्ध नहीं",
+        "metadata": {
+          "incomplete": true
+        }
+      },
+      {
+        "code": "COULD_NOT_VERIFY",
+        "label": "Could not verify",
+        "label_hi": "पुष्टि नहीं हो सकी",
+        "metadata": {
+          "incomplete": true
+        }
+      }
+    ],
+    "ESCALATION_CATEGORY": [
+      {
+        "code": "CUSTOMER_COMPLAINT",
+        "label": "Customer complaint",
+        "label_hi": "ग्राहक शिकायत",
+        "metadata": {}
+      },
+      {
+        "code": "LEGAL_CONCERN",
+        "label": "Legal concern",
+        "label_hi": "कानूनी चिंता",
+        "metadata": {}
+      },
+      {
+        "code": "PAYMENT_ISSUE",
+        "label": "Payment issue",
+        "label_hi": "भुगतान समस्या",
+        "metadata": {}
+      },
+      {
+        "code": "PROPERTY_ISSUE",
+        "label": "Property issue",
+        "label_hi": "प्रॉपर्टी समस्या",
+        "metadata": {}
+      },
+      {
+        "code": "SAFETY_ISSUE",
+        "label": "Safety issue",
+        "label_hi": "सुरक्षा समस्या",
+        "metadata": {}
+      },
+      {
+        "code": "SLA_BREACH",
+        "label": "SLA breach (system)",
+        "label_hi": "SLA उल्लंघन",
+        "metadata": {
+          "system_only": true
+        }
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "FACING": [
+      {
+        "code": "NORTH",
+        "label": "North",
+        "label_hi": "उत्तर",
+        "metadata": {}
+      },
+      {
+        "code": "NORTH_EAST",
+        "label": "North-East",
+        "label_hi": "उत्तर-पूर्व",
+        "metadata": {}
+      },
+      {
+        "code": "EAST",
+        "label": "East",
+        "label_hi": "पूर्व",
+        "metadata": {}
+      },
+      {
+        "code": "SOUTH_EAST",
+        "label": "South-East",
+        "label_hi": "दक्षिण-पूर्व",
+        "metadata": {}
+      },
+      {
+        "code": "SOUTH",
+        "label": "South",
+        "label_hi": "दक्षिण",
+        "metadata": {}
+      },
+      {
+        "code": "SOUTH_WEST",
+        "label": "South-West",
+        "label_hi": "दक्षिण-पश्चिम",
+        "metadata": {}
+      },
+      {
+        "code": "WEST",
+        "label": "West",
+        "label_hi": "पश्चिम",
+        "metadata": {}
+      },
+      {
+        "code": "NORTH_WEST",
+        "label": "North-West",
+        "label_hi": "उत्तर-पश्चिम",
+        "metadata": {}
+      },
+      {
+        "code": "PARK_FACING",
+        "label": "Park facing",
+        "label_hi": "पार्क की ओर",
+        "metadata": {}
+      },
+      {
+        "code": "ROAD_FACING",
+        "label": "Road facing",
+        "label_hi": "सड़क की ओर",
+        "metadata": {}
+      }
+    ],
+    "FOLLOW_UP_OUTCOME": [
+      {
+        "code": "DONE",
+        "label": "Done",
+        "label_hi": "पूर्ण",
+        "metadata": {}
+      },
+      {
+        "code": "RESCHEDULED",
+        "label": "Rescheduled",
+        "label_hi": "पुनर्निर्धारित",
+        "metadata": {}
+      },
+      {
+        "code": "NO_RESPONSE",
+        "label": "No response",
+        "label_hi": "कोई जवाब नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "NOT_NEEDED",
+        "label": "No longer needed",
+        "label_hi": "आवश्यक नहीं",
+        "metadata": {}
+      }
+    ],
+    "FOLLOW_UP_TYPE": [
+      {
+        "code": "CALL",
+        "label": "Call",
+        "label_hi": "कॉल",
+        "metadata": {
+          "outbound": true
+        }
+      },
+      {
+        "code": "WHATSAPP",
+        "label": "WhatsApp",
+        "label_hi": "व्हाट्सऐप",
+        "metadata": {
+          "outbound": true
+        }
+      },
+      {
+        "code": "MEETING",
+        "label": "Meeting",
+        "label_hi": "मीटिंग",
+        "metadata": {
+          "outbound": true
+        }
+      },
+      {
+        "code": "DOCUMENT",
+        "label": "Document",
+        "label_hi": "दस्तावेज़",
+        "metadata": {
+          "outbound": false
+        }
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {
+          "outbound": false
+        }
+      }
+    ],
+    "FURNISHING": [
+      {
+        "code": "UNFURNISHED",
+        "label": "Unfurnished",
+        "label_hi": "बिना फर्नीचर",
+        "metadata": {
+          "score": 4
+        }
+      },
+      {
+        "code": "SEMI_FURNISHED",
+        "label": "Semi-furnished",
+        "label_hi": "अर्ध-सुसज्जित",
+        "metadata": {
+          "score": 7
+        }
+      },
+      {
+        "code": "FURNISHED",
+        "label": "Fully furnished",
+        "label_hi": "पूर्ण सुसज्जित",
+        "metadata": {
+          "score": 7
+        }
+      }
+    ],
+    "GLOSSARY": [
+      {
+        "code": "ON_DUTY",
+        "label": "On Duty",
+        "label_hi": "ड्यूटी पर",
+        "metadata": {
+          "definition": "You are available to receive new work now."
+        }
+      },
+      {
+        "code": "POTENTIAL_EARNING",
+        "label": "Potential Earning",
+        "label_hi": "संभावित कमाई",
+        "metadata": {
+          "definition": "Indicative earning from open work; not payable until fee is reconciled and approved."
+        }
+      },
+      {
+        "code": "ACTIVE_LEADS",
+        "label": "Active Leads",
+        "label_hi": "सक्रिय लीड",
+        "metadata": {
+          "definition": "Open requirements you service or own."
+        }
+      },
+      {
+        "code": "VISIT_TODAY",
+        "label": "Visit Today",
+        "label_hi": "आज की विज़िट",
+        "metadata": {
+          "definition": "Site visits scheduled for today."
+        }
+      },
+      {
+        "code": "LEAD",
+        "label": "Lead",
+        "label_hi": "लीड",
+        "metadata": {
+          "definition": "A customer relationship with one or more requirements (Buy/Sell/Rent/Rent Out)."
+        }
+      },
+      {
+        "code": "ADD_LEAD",
+        "label": "Add Lead",
+        "label_hi": "लीड जोड़ें",
+        "metadata": {
+          "definition": "Create a new customer relationship and requirement(s)."
+        }
+      },
+      {
+        "code": "REFER",
+        "label": "Refer",
+        "label_hi": "रेफ़र करें",
+        "metadata": {
+          "definition": "Pass an opportunity to POBO; you get source credit."
+        }
+      },
+      {
+        "code": "SURVEY",
+        "label": "Survey",
+        "label_hi": "सर्वे",
+        "metadata": {
+          "definition": "Field intelligence about a unit; not a listing."
+        }
+      },
+      {
+        "code": "VISITS",
+        "label": "Visits",
+        "label_hi": "विज़िट",
+        "metadata": {
+          "definition": "Today, upcoming, completed and cancelled site visits."
+        }
+      },
+      {
+        "code": "EARNINGS",
+        "label": "Earnings",
+        "label_hi": "कमाई",
+        "metadata": {
+          "definition": "Potential, gated, approved, scheduled and paid earnings."
+        }
+      },
+      {
+        "code": "NEW_LEADS",
+        "label": "New Leads",
+        "label_hi": "नई लीड",
+        "metadata": {
+          "definition": "Requirements assigned to you today."
+        }
+      },
+      {
+        "code": "CALLS",
+        "label": "Calls",
+        "label_hi": "कॉल",
+        "metadata": {
+          "definition": "Calls you logged today."
+        }
+      },
+      {
+        "code": "FOLLOWUPS",
+        "label": "Followups",
+        "label_hi": "फॉलो-अप",
+        "metadata": {
+          "definition": "Follow-ups due today or overdue."
+        }
+      },
+      {
+        "code": "FLATS_SURVEYED",
+        "label": "Flats Surveyed",
+        "label_hi": "सर्वे किए गए फ्लैट",
+        "metadata": {
+          "definition": "Units with a survey recorded."
+        }
+      },
+      {
+        "code": "LISTING",
+        "label": "Listing",
+        "label_hi": "लिस्टिंग",
+        "metadata": {
+          "definition": "A marketable property record; only verified listings are matched."
+        }
+      },
+      {
+        "code": "RELATIONSHIP_OWNER",
+        "label": "Relationship Owner",
+        "label_hi": "रिलेशनशिप ओनर",
+        "metadata": {
+          "definition": "The AA who coordinates the overall customer relationship."
+        }
+      },
+      {
+        "code": "SERVICING_AA",
+        "label": "Servicing AA",
+        "label_hi": "सर्विसिंग एए",
+        "metadata": {
+          "definition": "The AA doing the work on one specific requirement."
+        }
+      },
+      {
+        "code": "TERRITORY_FLOAT",
+        "label": "Territory Float",
+        "label_hi": "टेरिटरी फ्लोट",
+        "metadata": {
+          "definition": "A requirement from an uncovered society offered to nearby AAs."
+        }
+      },
+      {
+        "code": "COVER_AA",
+        "label": "Cover AA",
+        "label_hi": "कवर एए",
+        "metadata": {
+          "definition": "Temporary cover during leave; ownership unchanged."
+        }
+      },
+      {
+        "code": "SLA",
+        "label": "SLA",
+        "label_hi": "एसएलए",
+        "metadata": {
+          "definition": "Time commitment for the first meaningful action."
+        }
+      },
+      {
+        "code": "DNC",
+        "label": "Do Not Contact",
+        "label_hi": "संपर्क न करें",
+        "metadata": {
+          "definition": "Customer asked not to be contacted."
+        }
+      }
+    ],
+    "HOLD_REASON": [
+      {
+        "code": "CUSTOMER_TRAVELLING",
+        "label": "Customer travelling",
+        "label_hi": "ग्राहक यात्रा पर",
+        "metadata": {}
+      },
+      {
+        "code": "INVALID_DATA",
+        "label": "Invalid data",
+        "label_hi": "गलत जानकारी",
+        "metadata": {}
+      },
+      {
+        "code": "WAITING_DOCUMENTS",
+        "label": "Waiting for documents",
+        "label_hi": "दस्तावेज़ों की प्रतीक्षा",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "KEY_PARTY": [
+      {
+        "code": "OWNER",
+        "label": "Owner",
+        "label_hi": "मालिक",
+        "metadata": {}
+      },
+      {
+        "code": "TENANT",
+        "label": "Tenant",
+        "label_hi": "किरायेदार",
+        "metadata": {}
+      },
+      {
+        "code": "SOCIETY_OFFICE",
+        "label": "Society office",
+        "label_hi": "सोसाइटी ऑफिस",
+        "metadata": {}
+      },
+      {
+        "code": "CARETAKER",
+        "label": "Caretaker",
+        "label_hi": "केयरटेकर",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "KITCHEN_SIZE": [
+      {
+        "code": "SMALL",
+        "label": "Small",
+        "label_hi": "छोटा",
+        "metadata": {}
+      },
+      {
+        "code": "MEDIUM",
+        "label": "Medium",
+        "label_hi": "मध्यम",
+        "metadata": {}
+      },
+      {
+        "code": "LARGE",
+        "label": "Large",
+        "label_hi": "बड़ा",
+        "metadata": {}
+      },
+      {
+        "code": "MODULAR",
+        "label": "Modular kitchen",
+        "label_hi": "मॉड्यूलर किचन",
+        "metadata": {}
+      }
+    ],
+    "LEAD_SOURCE": [
+      {
+        "code": "WEBSITE",
+        "label": "Website (pobo.club)",
+        "label_hi": "वेबसाइट",
+        "metadata": {
+          "channel": "digital"
+        }
+      },
+      {
+        "code": "AA_DIRECT",
+        "label": "AA direct",
+        "label_hi": "एए डायरेक्ट",
+        "metadata": {}
+      },
+      {
+        "code": "REFERRAL",
+        "label": "Referral",
+        "label_hi": "रेफ़रल",
+        "metadata": {
+          "creates_source_contribution": true
+        }
+      },
+      {
+        "code": "SOCIETY_SURVEY",
+        "label": "Society survey",
+        "label_hi": "सोसाइटी सर्वे",
+        "metadata": {}
+      },
+      {
+        "code": "CAMPAIGN",
+        "label": "Campaign",
+        "label_hi": "अभियान",
+        "metadata": {
+          "channel": "digital"
+        }
+      },
+      {
+        "code": "EVENT",
+        "label": "Event",
+        "label_hi": "इवेंट",
+        "metadata": {}
+      },
+      {
+        "code": "WALK_IN",
+        "label": "Walk-in",
+        "label_hi": "वॉक-इन",
+        "metadata": {}
+      },
+      {
+        "code": "INBOUND_CALL",
+        "label": "Inbound call",
+        "label_hi": "इनबाउंड कॉल",
+        "metadata": {}
+      }
+    ],
+    "LOST_REASON": [
+      {
+        "code": "NOT_INTERESTED",
+        "label": "Not interested",
+        "label_hi": "रुचि नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "BUDGET_MISMATCH",
+        "label": "Budget mismatch",
+        "label_hi": "बजट मेल नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "BOUGHT_ELSEWHERE",
+        "label": "Bought / rented elsewhere",
+        "label_hi": "कहीं और लिया",
+        "metadata": {}
+      },
+      {
+        "code": "PLAN_DROPPED",
+        "label": "Plan dropped",
+        "label_hi": "योजना रद्द",
+        "metadata": {}
+      },
+      {
+        "code": "UNREACHABLE",
+        "label": "Unreachable",
+        "label_hi": "संपर्क नहीं हो सका",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "NOT_SUITABLE_REASON": [
+      {
+        "code": "PRICE",
+        "label": "Price too high",
+        "label_hi": "कीमत ज़्यादा",
+        "metadata": {}
+      },
+      {
+        "code": "LOCATION",
+        "label": "Location",
+        "label_hi": "स्थान",
+        "metadata": {}
+      },
+      {
+        "code": "LAYOUT",
+        "label": "Layout / configuration",
+        "label_hi": "लेआउट",
+        "metadata": {}
+      },
+      {
+        "code": "FLOOR",
+        "label": "Floor",
+        "label_hi": "मंज़िल",
+        "metadata": {}
+      },
+      {
+        "code": "CONDITION",
+        "label": "Condition",
+        "label_hi": "स्थिति",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "PARKING": [
+      {
+        "code": "NONE",
+        "label": "No parking",
+        "label_hi": "पार्किंग नहीं",
+        "metadata": {
+          "has_parking": false
+        }
+      },
+      {
+        "code": "OPEN",
+        "label": "Open parking",
+        "label_hi": "खुली पार्किंग",
+        "metadata": {
+          "has_parking": true
+        }
+      },
+      {
+        "code": "COVERED_1",
+        "label": "1 covered",
+        "label_hi": "1 कवर्ड",
+        "metadata": {
+          "has_parking": true
+        }
+      },
+      {
+        "code": "COVERED_2",
+        "label": "2 covered",
+        "label_hi": "2 कवर्ड",
+        "metadata": {
+          "has_parking": true
+        }
+      }
+    ],
+    "PROPERTY_INTENT": [
+      {
+        "code": "SELL",
+        "label": "Wants to sell",
+        "label_hi": "बेचना चाहते हैं",
+        "metadata": {
+          "opportunity": "SELL"
+        }
+      },
+      {
+        "code": "RENT_OUT",
+        "label": "Wants to rent out",
+        "label_hi": "किराये पर देना चाहते हैं",
+        "metadata": {
+          "opportunity": "RENT_OUT"
+        }
+      },
+      {
+        "code": "BUY",
+        "label": "Wants to buy",
+        "label_hi": "खरीदना चाहते हैं",
+        "metadata": {}
+      },
+      {
+        "code": "RENT",
+        "label": "Wants to rent",
+        "label_hi": "किराये पर लेना चाहते हैं",
+        "metadata": {}
+      },
+      {
+        "code": "NONE",
+        "label": "No plans",
+        "label_hi": "कोई योजना नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "UNKNOWN",
+        "label": "Unknown",
+        "label_hi": "अज्ञात",
+        "metadata": {}
+      }
+    ],
+    "REFERRER_RELATION": [
+      {
+        "code": "FRIEND",
+        "label": "Friend",
+        "label_hi": "दोस्त",
+        "metadata": {}
+      },
+      {
+        "code": "FAMILY",
+        "label": "Family member",
+        "label_hi": "परिवार",
+        "metadata": {}
+      },
+      {
+        "code": "SOCIETY_RESIDENT",
+        "label": "Society resident",
+        "label_hi": "सोसाइटी निवासी",
+        "metadata": {}
+      },
+      {
+        "code": "COLLEAGUE",
+        "label": "Office colleague",
+        "label_hi": "ऑफ़िस सहकर्मी",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "TIMELINE": [
+      {
+        "code": "IMMEDIATE",
+        "label": "Immediately",
+        "label_hi": "तुरंत",
+        "metadata": {}
+      },
+      {
+        "code": "WITHIN_3_MONTHS",
+        "label": "0–3 months",
+        "label_hi": "0–3 महीने",
+        "metadata": {}
+      },
+      {
+        "code": "3_TO_6_MONTHS",
+        "label": "3–6 months",
+        "label_hi": "3–6 महीने",
+        "metadata": {}
+      },
+      {
+        "code": "6_TO_12_MONTHS",
+        "label": "6–12 months",
+        "label_hi": "6–12 महीने",
+        "metadata": {}
+      },
+      {
+        "code": "EXPLORATORY",
+        "label": "Just exploring",
+        "label_hi": "केवल जानकारी",
+        "metadata": {}
+      }
+    ],
+    "TRANSFER_REASON": [
+      {
+        "code": "WRONG_TERRITORY",
+        "label": "Wrong territory",
+        "label_hi": "गलत क्षेत्र",
+        "metadata": {}
+      },
+      {
+        "code": "AREA_SPECIALIST",
+        "label": "Area specialist",
+        "label_hi": "क्षेत्र विशेषज्ञ",
+        "metadata": {}
+      },
+      {
+        "code": "WORKLOAD",
+        "label": "Workload",
+        "label_hi": "कार्यभार",
+        "metadata": {}
+      },
+      {
+        "code": "CUSTOMER_REQUEST",
+        "label": "Customer request",
+        "label_hi": "ग्राहक अनुरोध",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "VISIT_CANCEL_REASON": [
+      {
+        "code": "CUSTOMER_UNAVAILABLE",
+        "label": "Customer unavailable",
+        "label_hi": "ग्राहक उपलब्ध नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "OWNER_UNAVAILABLE",
+        "label": "Owner/tenant unavailable",
+        "label_hi": "मालिक/किरायेदार उपलब्ध नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "PROPERTY_UNAVAILABLE",
+        "label": "Property no longer available",
+        "label_hi": "प्रॉपर्टी उपलब्ध नहीं",
+        "metadata": {}
+      },
+      {
+        "code": "RESCHEDULE",
+        "label": "Rescheduling",
+        "label_hi": "दोबारा तय",
+        "metadata": {}
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य",
+        "metadata": {}
+      }
+    ],
+    "VISIT_OUTCOME": [
+      {
+        "code": "INTERESTED",
+        "label": "Interested",
+        "label_hi": "इच्छुक",
+        "metadata": {
+          "shortlist_status": "INTERESTED",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "NOT_INTERESTED",
+        "label": "Not interested",
+        "label_hi": "रुचि नहीं",
+        "metadata": {
+          "shortlist_status": "NOT_SUITABLE"
+        }
+      },
+      {
+        "code": "NEGOTIATE",
+        "label": "Negotiate",
+        "label_hi": "बातचीत",
+        "metadata": {
+          "sets_status": "NEGOTIATION",
+          "shortlist_status": "INTERESTED",
+          "default_next_action": "Start negotiation: share offer/counter with owner",
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "FOLLOW_UP",
+        "label": "Follow up",
+        "label_hi": "फॉलो-अप",
+        "metadata": {
+          "requires_next_action": true
+        }
+      },
+      {
+        "code": "DIFFERENT_PROPERTY_REQUIRED",
+        "label": "Different property required",
+        "label_hi": "अलग प्रॉपर्टी चाहिए",
+        "metadata": {
+          "sets_status": "QUALIFIED",
+          "shortlist_status": "NOT_SUITABLE"
+        }
+      }
+    ]
+  },
+  "enums": {
+    "requirement_type": [
+      {
+        "code": "BUY",
+        "label": "Buy",
+        "label_hi": "खरीदना"
+      },
+      {
+        "code": "SELL",
+        "label": "Sell",
+        "label_hi": "बेचना"
+      },
+      {
+        "code": "RENT",
+        "label": "Rent",
+        "label_hi": "किराये पर लेना"
+      },
+      {
+        "code": "RENT_OUT",
+        "label": "Rent Out",
+        "label_hi": "किराये पर देना"
+      },
+      {
+        "code": "GENERAL",
+        "label": "General enquiry",
+        "label_hi": "सामान्य पूछताछ"
+      }
+    ],
+    "requirement_status": [
+      {
+        "code": "NEW",
+        "label": "New",
+        "label_hi": "नया"
+      },
+      {
+        "code": "CONTACT_ATTEMPTED",
+        "label": "Contact attempted",
+        "label_hi": "संपर्क का प्रयास"
+      },
+      {
+        "code": "CONNECTED",
+        "label": "Connected",
+        "label_hi": "बात हुई"
+      },
+      {
+        "code": "QUALIFIED",
+        "label": "Qualified",
+        "label_hi": "योग्य"
+      },
+      {
+        "code": "VISIT_SCHEDULED",
+        "label": "Visit scheduled",
+        "label_hi": "विज़िट तय"
+      },
+      {
+        "code": "NEGOTIATION",
+        "label": "Negotiation",
+        "label_hi": "बातचीत"
+      },
+      {
+        "code": "ON_HOLD",
+        "label": "On hold",
+        "label_hi": "रुका हुआ"
+      },
+      {
+        "code": "CLOSED_WON",
+        "label": "Closed won",
+        "label_hi": "सफल"
+      },
+      {
+        "code": "CLOSED_LOST",
+        "label": "Closed lost",
+        "label_hi": "बंद (असफल)"
+      }
+    ],
+    "requirement_status_transitions": {
+      "NEW": [
+        "CONTACT_ATTEMPTED",
+        "CONNECTED",
+        "QUALIFIED",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "CONTACT_ATTEMPTED": [
+        "CONNECTED",
+        "QUALIFIED",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "CONNECTED": [
+        "QUALIFIED",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "QUALIFIED": [
+        "VISIT_SCHEDULED",
+        "NEGOTIATION",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "VISIT_SCHEDULED": [
+        "QUALIFIED",
+        "NEGOTIATION",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "NEGOTIATION": [
+        "QUALIFIED",
+        "CLOSED_WON",
+        "ON_HOLD",
+        "CLOSED_LOST"
+      ],
+      "ON_HOLD": [
+        "CONTACT_ATTEMPTED",
+        "CONNECTED",
+        "QUALIFIED",
+        "VISIT_SCHEDULED",
+        "NEGOTIATION",
+        "CLOSED_LOST"
+      ],
+      "CLOSED_LOST": [
+        "CONNECTED",
+        "QUALIFIED"
+      ],
+      "CLOSED_WON": []
+    },
+    "assignment_state": [
+      {
+        "code": "ASSIGNED",
+        "label": "Assigned",
+        "label_hi": "असाइन"
+      },
+      {
+        "code": "FLOATING",
+        "label": "Territory float open",
+        "label_hi": "टेरिटरी फ्लोट"
+      },
+      {
+        "code": "UNASSIGNED",
+        "label": "Ops queue (no eligible AA)",
+        "label_hi": "ऑप्स कतार"
+      },
+      {
+        "code": "PENDING_REVIEW",
+        "label": "Ops review required",
+        "label_hi": "ऑप्स समीक्षा"
+      }
+    ],
+    "sla_state": [
+      {
+        "code": "NOT_STARTED",
+        "label": "Not started (not assigned yet)",
+        "label_hi": "शुरू नहीं"
+      },
+      {
+        "code": "ON_TRACK",
+        "label": "On track",
+        "label_hi": "समय पर"
+      },
+      {
+        "code": "AT_RISK",
+        "label": "Approaching target",
+        "label_hi": "समय कम"
+      },
+      {
+        "code": "TARGET_MISSED",
+        "label": "Target missed, not yet breached",
+        "label_hi": "लक्ष्य चूका"
+      },
+      {
+        "code": "BREACHED",
+        "label": "Breached",
+        "label_hi": "उल्लंघन"
+      },
+      {
+        "code": "PAUSED",
+        "label": "Paused (hold)",
+        "label_hi": "रुका"
+      },
+      {
+        "code": "MET",
+        "label": "Met",
+        "label_hi": "पूरा"
+      },
+      {
+        "code": "MET_LATE",
+        "label": "Met after breach",
+        "label_hi": "देर से पूरा"
+      }
+    ],
+    "duty_status": [
+      {
+        "code": "ON_DUTY",
+        "label": "On Duty",
+        "label_hi": "ड्यूटी पर"
+      },
+      {
+        "code": "OFF_DUTY",
+        "label": "Off Duty",
+        "label_hi": "ड्यूटी से बाहर"
+      }
+    ],
+    "priority": [
+      {
+        "code": "NORMAL",
+        "label": "Normal",
+        "label_hi": "सामान्य"
+      },
+      {
+        "code": "HIGH",
+        "label": "High",
+        "label_hi": "उच्च"
+      },
+      {
+        "code": "URGENT",
+        "label": "Urgent",
+        "label_hi": "अति आवश्यक"
+      }
+    ],
+    "contact_role": [
+      {
+        "code": "SELF",
+        "label": "Customer",
+        "label_hi": "ग्राहक"
+      },
+      {
+        "code": "SPOUSE",
+        "label": "Spouse",
+        "label_hi": "पति/पत्नी"
+      },
+      {
+        "code": "FAMILY",
+        "label": "Family member",
+        "label_hi": "परिवार"
+      },
+      {
+        "code": "CO_OWNER",
+        "label": "Co-owner",
+        "label_hi": "सह-मालिक"
+      },
+      {
+        "code": "TENANT",
+        "label": "Tenant",
+        "label_hi": "किरायेदार"
+      },
+      {
+        "code": "PROPERTY_MANAGER",
+        "label": "Property manager",
+        "label_hi": "प्रॉपर्टी मैनेजर"
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य"
+      }
+    ],
+    "transfer_type": [
+      {
+        "code": "REQUIREMENT",
+        "label": "Requirement transfer",
+        "label_hi": "आवश्यकता ट्रांसफ़र"
+      },
+      {
+        "code": "RELATIONSHIP",
+        "label": "Relationship transfer",
+        "label_hi": "रिलेशनशिप ट्रांसफ़र"
+      }
+    ],
+    "review_status": [
+      {
+        "code": "PENDING",
+        "label": "Pending review",
+        "label_hi": "लंबित"
+      },
+      {
+        "code": "APPROVED",
+        "label": "Approved",
+        "label_hi": "स्वीकृत"
+      },
+      {
+        "code": "REJECTED",
+        "label": "Rejected",
+        "label_hi": "अस्वीकृत"
+      },
+      {
+        "code": "CANCELLED",
+        "label": "Cancelled",
+        "label_hi": "रद्द"
+      }
+    ],
+    "escalation_status": [
+      {
+        "code": "OPEN",
+        "label": "Open",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "ACKNOWLEDGED",
+        "label": "Acknowledged",
+        "label_hi": "स्वीकार किया"
+      },
+      {
+        "code": "RESOLVED",
+        "label": "Resolved",
+        "label_hi": "हल"
+      }
+    ],
+    "follow_up_status": [
+      {
+        "code": "PENDING",
+        "label": "Pending",
+        "label_hi": "लंबित"
+      },
+      {
+        "code": "COMPLETED",
+        "label": "Completed",
+        "label_hi": "पूर्ण"
+      },
+      {
+        "code": "CANCELLED",
+        "label": "Cancelled",
+        "label_hi": "रद्द"
+      }
+    ],
+    "float_status": [
+      {
+        "code": "OPEN",
+        "label": "Open",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "CLAIMED",
+        "label": "Claimed",
+        "label_hi": "क्लेम किया"
+      },
+      {
+        "code": "AUTO_ASSIGNED",
+        "label": "Auto-assigned",
+        "label_hi": "स्वतः असाइन"
+      },
+      {
+        "code": "EXPIRED_UNASSIGNED",
+        "label": "Expired, sent to Ops",
+        "label_hi": "समाप्त, ऑप्स को भेजा"
+      },
+      {
+        "code": "CANCELLED",
+        "label": "Cancelled",
+        "label_hi": "रद्द"
+      }
+    ],
+    "call_direction": [
+      {
+        "code": "OUTBOUND",
+        "label": "Outbound",
+        "label_hi": "आउटगोइंग"
+      },
+      {
+        "code": "INBOUND",
+        "label": "Inbound",
+        "label_hi": "इनकमिंग"
+      }
+    ],
+    "language": [
+      {
+        "code": "en",
+        "label": "English",
+        "label_hi": "अंग्रेज़ी"
+      },
+      {
+        "code": "hi",
+        "label": "Hindi",
+        "label_hi": "हिन्दी"
+      }
+    ],
+    "occupancy": [
+      {
+        "code": "OWNER_OCCUPIED",
+        "label": "Owner occupied",
+        "label_hi": "मालिक रहते हैं"
+      },
+      {
+        "code": "TENANT_OCCUPIED",
+        "label": "Tenant occupied",
+        "label_hi": "किरायेदार रहते हैं"
+      },
+      {
+        "code": "VACANT",
+        "label": "Vacant",
+        "label_hi": "खाली"
+      },
+      {
+        "code": "UNKNOWN",
+        "label": "Unknown",
+        "label_hi": "अज्ञात"
+      }
+    ],
+    "verification": [
+      {
+        "code": "VERIFIED",
+        "label": "Verified",
+        "label_hi": "सत्यापित"
+      },
+      {
+        "code": "UNVERIFIED",
+        "label": "Unverified",
+        "label_hi": "असत्यापित"
+      },
+      {
+        "code": "NEEDS_VERIFICATION",
+        "label": "Needs verification",
+        "label_hi": "सत्यापन ज़रूरी"
+      }
+    ],
+    "survey_level": [
+      {
+        "code": "NONE",
+        "label": "Not surveyed",
+        "label_hi": "सर्वे नहीं हुआ"
+      },
+      {
+        "code": "BASIC",
+        "label": "Basic survey",
+        "label_hi": "बुनियादी सर्वे"
+      },
+      {
+        "code": "DETAILED",
+        "label": "Basic + unit details",
+        "label_hi": "विस्तृत सर्वे"
+      }
+    ],
+    "contact_slot": [
+      {
+        "code": "OWNER",
+        "label": "Owner",
+        "label_hi": "मालिक"
+      },
+      {
+        "code": "ADDITIONAL",
+        "label": "Additional contact",
+        "label_hi": "अतिरिक्त संपर्क"
+      },
+      {
+        "code": "TENANT",
+        "label": "Tenant",
+        "label_hi": "किरायेदार"
+      }
+    ],
+    "field_task_kind": [
+      {
+        "code": "TENANCY_EXPIRY",
+        "label": "Tenancy expiring",
+        "label_hi": "किरायेदारी समाप्त हो रही है"
+      },
+      {
+        "code": "LISTING_CHANGES",
+        "label": "Listing changes requested",
+        "label_hi": "लिस्टिंग में बदलाव चाहिए"
+      },
+      {
+        "code": "SURVEY_REVISIT",
+        "label": "Survey incomplete: revisit",
+        "label_hi": "सर्वे दोबारा करें"
+      },
+      {
+        "code": "STRUCTURE_REVIEW",
+        "label": "Structure correction result",
+        "label_hi": "संरचना सुधार परिणाम"
+      }
+    ],
+    "field_task_status": [
+      {
+        "code": "OPEN",
+        "label": "Open",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "DONE",
+        "label": "Done",
+        "label_hi": "पूर्ण"
+      },
+      {
+        "code": "DISMISSED",
+        "label": "Dismissed",
+        "label_hi": "हटाया गया"
+      }
+    ],
+    "opportunity_status": [
+      {
+        "code": "OPEN",
+        "label": "Open",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "CONVERTED_TO_LEAD",
+        "label": "Converted to lead",
+        "label_hi": "लीड बनाई गई"
+      },
+      {
+        "code": "LISTED",
+        "label": "Listing created",
+        "label_hi": "लिस्टिंग बनी"
+      },
+      {
+        "code": "CLOSED",
+        "label": "Closed",
+        "label_hi": "बंद"
+      }
+    ],
+    "duplicate_status": [
+      {
+        "code": "NONE",
+        "label": "No duplicate suspected",
+        "label_hi": "कोई डुप्लिकेट नहीं"
+      },
+      {
+        "code": "FLAGGED",
+        "label": "Possible duplicate (review)",
+        "label_hi": "संभावित डुप्लिकेट"
+      },
+      {
+        "code": "CONFIRMED_DISTINCT",
+        "label": "Reviewed: distinct tower",
+        "label_hi": "अलग टावर (पुष्टि)"
+      },
+      {
+        "code": "MERGED",
+        "label": "Merged into another tower",
+        "label_hi": "विलय किया गया"
+      }
+    ],
+    "correction_status": [
+      {
+        "code": "PENDING",
+        "label": "Pending",
+        "label_hi": "लंबित"
+      },
+      {
+        "code": "APPROVED",
+        "label": "Approved",
+        "label_hi": "स्वीकृत"
+      },
+      {
+        "code": "REJECTED",
+        "label": "Rejected",
+        "label_hi": "अस्वीकृत"
+      }
+    ],
+    "correction_action": [
+      {
+        "code": "RENAME",
+        "label": "Rename / renumber",
+        "label_hi": "नाम बदलें"
+      },
+      {
+        "code": "CHANGE_CONFIGURATION",
+        "label": "Change configuration",
+        "label_hi": "कॉन्फ़िगरेशन बदलें"
+      },
+      {
+        "code": "ARCHIVE",
+        "label": "Archive (keep history)",
+        "label_hi": "आर्काइव करें"
+      },
+      {
+        "code": "MERGE_INTO",
+        "label": "Merge into another tower/unit",
+        "label_hi": "दूसरे में विलय करें"
+      },
+      {
+        "code": "CONFIRM_DISTINCT",
+        "label": "Not a duplicate",
+        "label_hi": "डुप्लिकेट नहीं"
+      }
+    ],
+    "listing_status": [
+      {
+        "code": "DRAFT",
+        "label": "Draft",
+        "label_hi": "ड्राफ़्ट"
+      },
+      {
+        "code": "SUBMITTED",
+        "label": "Submitted for verification",
+        "label_hi": "सत्यापन के लिए भेजा"
+      },
+      {
+        "code": "CHANGES_REQUESTED",
+        "label": "Changes requested",
+        "label_hi": "बदलाव माँगे गए"
+      },
+      {
+        "code": "VERIFIED",
+        "label": "Verified (in inventory)",
+        "label_hi": "सत्यापित"
+      },
+      {
+        "code": "REJECTED",
+        "label": "Rejected",
+        "label_hi": "अस्वीकृत"
+      },
+      {
+        "code": "WITHDRAWN",
+        "label": "Withdrawn",
+        "label_hi": "वापस लिया"
+      }
+    ],
+    "listing_type": [
+      {
+        "code": "SELL",
+        "label": "For sale",
+        "label_hi": "बिक्री के लिए"
+      },
+      {
+        "code": "RENT_OUT",
+        "label": "For rent",
+        "label_hi": "किराये के लिए"
+      }
+    ],
+    "shortlist_status": [
+      {
+        "code": "SUGGESTED",
+        "label": "Suggested",
+        "label_hi": "सुझाया गया"
+      },
+      {
+        "code": "SHARED",
+        "label": "Shared with customer",
+        "label_hi": "ग्राहक को भेजा"
+      },
+      {
+        "code": "INTERESTED",
+        "label": "Customer interested",
+        "label_hi": "ग्राहक इच्छुक"
+      },
+      {
+        "code": "NOT_SUITABLE",
+        "label": "Not suitable",
+        "label_hi": "उपयुक्त नहीं"
+      },
+      {
+        "code": "VISITED",
+        "label": "Visited",
+        "label_hi": "विज़िट हो गई"
+      }
+    ],
+    "visit_status": [
+      {
+        "code": "SCHEDULED",
+        "label": "Scheduled",
+        "label_hi": "तय"
+      },
+      {
+        "code": "COMPLETED",
+        "label": "Completed",
+        "label_hi": "पूर्ण"
+      },
+      {
+        "code": "CANCELLED",
+        "label": "Cancelled",
+        "label_hi": "रद्द"
+      },
+      {
+        "code": "NO_SHOW",
+        "label": "No show",
+        "label_hi": "नहीं आए"
+      }
+    ],
+    "key_status": [
+      {
+        "code": "HELD",
+        "label": "Held by AA",
+        "label_hi": "एए के पास"
+      },
+      {
+        "code": "RETURNED",
+        "label": "Returned",
+        "label_hi": "लौटा दी"
+      },
+      {
+        "code": "HANDED_OVER",
+        "label": "Handed to another AA",
+        "label_hi": "दूसरे एए को सौंपी"
+      }
+    ],
+    "contribution_type": [
+      {
+        "code": "SOURCE",
+        "label": "Source / referral",
+        "label_hi": "स्रोत / रेफ़रल"
+      },
+      {
+        "code": "SERVICING",
+        "label": "Requirement servicing",
+        "label_hi": "लीड सर्विसिंग"
+      },
+      {
+        "code": "PROPERTY",
+        "label": "Property contribution",
+        "label_hi": "प्रॉपर्टी योगदान"
+      },
+      {
+        "code": "CLOSURE",
+        "label": "Closure contribution",
+        "label_hi": "डील बंद करने में योगदान"
+      }
+    ],
+    "help_category": [
+      {
+        "code": "GETTING_STARTED",
+        "label": "Getting started",
+        "label_hi": "शुरुआत"
+      },
+      {
+        "code": "LEADS",
+        "label": "Leads & calls",
+        "label_hi": "लीड और कॉल"
+      },
+      {
+        "code": "FIELD",
+        "label": "Mapping & surveys",
+        "label_hi": "मैपिंग और सर्वे"
+      },
+      {
+        "code": "LISTINGS",
+        "label": "Listings & visits",
+        "label_hi": "लिस्टिंग और विज़िट"
+      },
+      {
+        "code": "EARNINGS",
+        "label": "Earnings & payouts",
+        "label_hi": "कमाई और भुगतान"
+      },
+      {
+        "code": "POLICIES",
+        "label": "Policies & conduct",
+        "label_hi": "नीतियां और आचरण"
+      }
+    ],
+    "ticket_category": [
+      {
+        "code": "APP_ISSUE",
+        "label": "App problem",
+        "label_hi": "ऐप में समस्या"
+      },
+      {
+        "code": "LEAD_ASSIGNMENT",
+        "label": "Lead or assignment",
+        "label_hi": "लीड या असाइनमेंट"
+      },
+      {
+        "code": "LISTING",
+        "label": "Listing or visit",
+        "label_hi": "लिस्टिंग या विज़िट"
+      },
+      {
+        "code": "EARNINGS",
+        "label": "Earnings or payout",
+        "label_hi": "कमाई या भुगतान"
+      },
+      {
+        "code": "TRAINING",
+        "label": "Training or onboarding",
+        "label_hi": "ट्रेनिंग या ऑनबोर्डिंग"
+      },
+      {
+        "code": "OTHER",
+        "label": "Something else",
+        "label_hi": "कुछ और"
+      }
+    ],
+    "ticket_status": [
+      {
+        "code": "OPEN",
+        "label": "Open",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "IN_PROGRESS",
+        "label": "In progress",
+        "label_hi": "प्रगति में"
+      },
+      {
+        "code": "RESOLVED",
+        "label": "Resolved",
+        "label_hi": "हल हो गया"
+      },
+      {
+        "code": "CLOSED",
+        "label": "Closed",
+        "label_hi": "बंद"
+      }
+    ],
+    "negotiation_status": [
+      {
+        "code": "OPEN",
+        "label": "In negotiation",
+        "label_hi": "बातचीत जारी"
+      },
+      {
+        "code": "CONVERTED",
+        "label": "Converted to transaction",
+        "label_hi": "डील में बदली"
+      },
+      {
+        "code": "LOST",
+        "label": "Lost",
+        "label_hi": "हाथ से गई"
+      },
+      {
+        "code": "WITHDRAWN",
+        "label": "Withdrawn",
+        "label_hi": "वापस ली गई"
+      }
+    ],
+    "transaction_status": [
+      {
+        "code": "PENDING_VERIFICATION",
+        "label": "Entered, awaiting supervisor verification",
+        "label_hi": "सत्यापन बाकी"
+      },
+      {
+        "code": "VERIFIED",
+        "label": "Verified",
+        "label_hi": "सत्यापित"
+      },
+      {
+        "code": "CANCELLED",
+        "label": "Cancelled",
+        "label_hi": "रद्द"
+      }
+    ],
+    "fee_status": [
+      {
+        "code": "RECEIVED",
+        "label": "Received (not yet reconciled)",
+        "label_hi": "प्राप्त (मिलान बाकी)"
+      },
+      {
+        "code": "RECONCILED",
+        "label": "Reconciled with bank",
+        "label_hi": "बैंक से मिलान हो गया"
+      }
+    ],
+    "earning_state": [
+      {
+        "code": "POTENTIAL",
+        "label": "Potential",
+        "label_hi": "संभावित"
+      },
+      {
+        "code": "AWAITING_FEE",
+        "label": "Awaiting fee",
+        "label_hi": "फ़ीस का इंतज़ार"
+      },
+      {
+        "code": "ELIGIBLE",
+        "label": "Eligible",
+        "label_hi": "योग्य"
+      },
+      {
+        "code": "APPROVED",
+        "label": "Approved",
+        "label_hi": "स्वीकृत"
+      },
+      {
+        "code": "SCHEDULED",
+        "label": "Scheduled for payout",
+        "label_hi": "भुगतान निर्धारित"
+      },
+      {
+        "code": "PAID",
+        "label": "Paid",
+        "label_hi": "भुगतान हो गया"
+      }
+    ],
+    "visit_type": [
+      {
+        "code": "VIEWING",
+        "label": "Viewing",
+        "label_hi": "प्रॉपर्टी दिखाना"
+      },
+      {
+        "code": "INSPECTION",
+        "label": "Property inspection",
+        "label_hi": "प्रॉपर्टी निरीक्षण"
+      },
+      {
+        "code": "PHOTOGRAPHY",
+        "label": "Photography / video",
+        "label_hi": "फ़ोटो / वीडियो"
+      },
+      {
+        "code": "AGREEMENT_SIGNING",
+        "label": "Agreement signing",
+        "label_hi": "एग्रीमेंट साइन"
+      },
+      {
+        "code": "KEY_HANDOVER",
+        "label": "Key handover",
+        "label_hi": "चाबी सौंपना"
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य"
+      }
+    ],
+    "share_channel": [
+      {
+        "code": "WHATSAPP",
+        "label": "WhatsApp",
+        "label_hi": "व्हाट्सऐप"
+      },
+      {
+        "code": "SMS",
+        "label": "SMS",
+        "label_hi": "एसएमएस"
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य"
+      }
+    ],
+    "access_mode": [
+      {
+        "code": "PER_VISIT",
+        "label": "Collect and return for each visit",
+        "label_hi": "हर विज़िट पर लेना और लौटाना"
+      },
+      {
+        "code": "RETAINED",
+        "label": "POBO keeps the key",
+        "label_hi": "चाबी POBO के पास"
+      }
+    ],
+    "field_flag_status": [
+      {
+        "code": "PENDING",
+        "label": "Verification pending",
+        "label_hi": "पुष्टि बाकी"
+      },
+      {
+        "code": "CONFIRMED",
+        "label": "Confirmed by Ops",
+        "label_hi": "Ops ने पुष्टि की"
+      },
+      {
+        "code": "CORRECTED",
+        "label": "Corrected by Ops",
+        "label_hi": "Ops ने सुधारा"
+      },
+      {
+        "code": "WITHDRAWN",
+        "label": "Withdrawn by AA",
+        "label_hi": "वापस लिया"
+      }
+    ],
+    "field_flag_target": [
+      {
+        "code": "UNIT",
+        "label": "Unit (mapping / unit details)",
+        "label_hi": "यूनिट"
+      },
+      {
+        "code": "LISTING",
+        "label": "Listing",
+        "label_hi": "लिस्टिंग"
+      }
+    ],
+    "structure_status": [
+      {
+        "code": "MAPPED",
+        "label": "Mapped by AA",
+        "label_hi": "मैप किया गया"
+      },
+      {
+        "code": "PENDING_VERIFICATION",
+        "label": "Quick-added: Ops to verify structure",
+        "label_hi": "Ops जाँच बाकी"
+      },
+      {
+        "code": "VERIFIED",
+        "label": "Structure verified by Ops",
+        "label_hi": "सत्यापित"
+      }
+    ],
+    "field_task_priority": [
+      {
+        "code": "NORMAL",
+        "label": "Normal",
+        "label_hi": "सामान्य"
+      },
+      {
+        "code": "URGENT",
+        "label": "Urgent",
+        "label_hi": "अति आवश्यक"
+      }
+    ],
+    "visit_types_by_requirement_type": {
+      "BUY": [
+        "VIEWING",
+        "AGREEMENT_SIGNING",
+        "KEY_HANDOVER",
+        "OTHER"
+      ],
+      "RENT": [
+        "VIEWING",
+        "AGREEMENT_SIGNING",
+        "KEY_HANDOVER",
+        "OTHER"
+      ],
+      "SELL": [
+        "INSPECTION",
+        "PHOTOGRAPHY",
+        "AGREEMENT_SIGNING",
+        "KEY_HANDOVER",
+        "OTHER"
+      ],
+      "RENT_OUT": [
+        "INSPECTION",
+        "PHOTOGRAPHY",
+        "AGREEMENT_SIGNING",
+        "KEY_HANDOVER",
+        "OTHER"
+      ],
+      "GENERAL": [
+        "VIEWING",
+        "OTHER"
+      ]
+    },
+    "field_flag_fields": {
+      "UNIT": [
+        "super_area_sqft",
+        "carpet_area_sqft",
+        "configuration",
+        "floor",
+        "facing",
+        "furnishing",
+        "parking",
+        "bathrooms",
+        "balcony_count",
+        "kitchen_size"
+      ],
+      "LISTING": [
+        "configuration",
+        "super_area_sqft",
+        "carpet_area_sqft",
+        "facing",
+        "furnishing",
+        "parking",
+        "availability"
+      ]
+    },
+    "property_kind": [
+      {
+        "code": "FLAT",
+        "label": "Flat in a society",
+        "label_hi": "Flat in a society"
+      },
+      {
+        "code": "INDEPENDENT_HOUSE",
+        "label": "Independent house",
+        "label_hi": "Independent house"
+      },
+      {
+        "code": "BUILDER_FLOOR",
+        "label": "Builder floor",
+        "label_hi": "Builder floor"
+      },
+      {
+        "code": "VILLA",
+        "label": "Villa",
+        "label_hi": "Villa"
+      },
+      {
+        "code": "PLOT",
+        "label": "Plot",
+        "label_hi": "Plot"
+      },
+      {
+        "code": "OTHER",
+        "label": "Other",
+        "label_hi": "अन्य"
+      }
+    ],
+    "location_source": [
+      {
+        "code": "TEXT",
+        "label": "Typed address",
+        "label_hi": "Typed address"
+      },
+      {
+        "code": "PASTED_COORDS",
+        "label": "Pasted coordinates",
+        "label_hi": "Pasted coordinates"
+      },
+      {
+        "code": "MAPS_LINK",
+        "label": "Google Maps link",
+        "label_hi": "Google Maps link"
+      }
+    ],
+    "location_status": [
+      {
+        "code": "CAPTURED",
+        "label": "Location captured",
+        "label_hi": "Location captured"
+      },
+      {
+        "code": "OPEN",
+        "label": "Area open (match widely)",
+        "label_hi": "खुला"
+      },
+      {
+        "code": "NOT_CAPTURED",
+        "label": "Location preference not captured",
+        "label_hi": "Location preference not captured"
+      }
+    ],
+    "media_type": [
+      {
+        "code": "PHOTO",
+        "label": "Photo",
+        "label_hi": "Photo"
+      },
+      {
+        "code": "VIDEO",
+        "label": "Video",
+        "label_hi": "Video"
+      }
+    ],
+    "file_sensitivity": [
+      {
+        "code": "PUBLIC_MEDIA",
+        "label": "Property media (shareable)",
+        "label_hi": "Property media (shareable)"
+      },
+      {
+        "code": "INTERNAL",
+        "label": "Internal document",
+        "label_hi": "Internal document"
+      },
+      {
+        "code": "SENSITIVE_ID",
+        "label": "Identity / KYC document (restricted)",
+        "label_hi": "Identity / KYC document (restricted)"
+      }
+    ],
+    "leave_type": [
+      {
+        "code": "LEAVE",
+        "label": "Leave",
+        "label_hi": "Leave"
+      },
+      {
+        "code": "SICK",
+        "label": "Sick",
+        "label_hi": "Sick"
+      },
+      {
+        "code": "EMERGENCY",
+        "label": "Emergency",
+        "label_hi": "Emergency"
+      }
+    ],
+    "visit_outcomes_by_type": {
+      "VIEWING": [
+        "INTERESTED",
+        "NOT_INTERESTED",
+        "NEGOTIATE",
+        "ANOTHER_VISIT",
+        "FOLLOW_UP",
+        "NO_SHOW",
+        "DIFFERENT_PROPERTY_REQUIRED"
+      ],
+      "INSPECTION": [
+        "INSPECTION_COMPLETED",
+        "PHOTOS_COMPLETED",
+        "VIDEO_COMPLETED",
+        "MORE_MEDIA_REQUIRED",
+        "DETAILS_UPDATED",
+        "INFO_MISSING",
+        "OWNER_FOLLOW_UP",
+        "RESCHEDULE_INSPECTION"
+      ],
+      "PHOTOGRAPHY": [
+        "PHOTOS_COMPLETED",
+        "VIDEO_COMPLETED",
+        "MORE_MEDIA_REQUIRED",
+        "INFO_MISSING",
+        "OWNER_FOLLOW_UP",
+        "RESCHEDULE_INSPECTION"
+      ],
+      "AGREEMENT_SIGNING": [
+        "FOLLOW_UP",
+        "AGREEMENT_SIGNED",
+        "PARTIALLY_SIGNED",
+        "SIGNING_RESCHEDULED"
+      ],
+      "KEY_HANDOVER": [
+        "FOLLOW_UP",
+        "KEYS_HANDED_OVER",
+        "HANDOVER_PENDING"
+      ],
+      "OTHER": [
+        "FOLLOW_UP",
+        "COMPLETED"
+      ]
+    }
+  }
+}

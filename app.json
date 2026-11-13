@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "POBO AA",
+    "slug": "pobo-aa",
+    "scheme": "poboaa",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "club.pobo.aa",
+      "infoPlist": {}
+    },
+    "android": {
+      "package": "club.pobo.aa",
+      "adaptiveIcon": {
+        "backgroundColor": "#0d9488",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "softwareKeyboardLayoutMode": "pan"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-secure-store",
+      "expo-localization",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-notifications",
+        {
+          "color": "#0d9488"
+        }
+      ],
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "pobo_setup_note": "extra.eas.projectId belongs to the original developer's Expo account. Run `npx eas-cli init` with your own account to replace it before building. For local testing set EXPO_PUBLIC_API_URL in .env (see .env.example) and in eas.json for APK builds.",
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "0f731671-cc47-4b82-a581-f98a691a4ac8"
+      }
+    }
+  }
+}
